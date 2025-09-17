@@ -1,0 +1,656 @@
+html {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+video {
+    margin: 0;
+    padding: 0;
+    display: none !important;
+    visibility: hidden !important;
+}
+
+body {
+    overflow: auto;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    animation: cambia-fondo-2 16s 4.5s linear infinite forwards;
+}
+
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.container {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 78vw;
+    border-radius: 9vw;
+    background: rgba(73, 67, 67, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(154, 153, 181, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation:
+        generalFadeIn 2s 5s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+        cambia-fondo 16s 4.5s linear infinite forwards,
+        containerExpandHeight 1s 6s cubic-bezier(0.77, 0, 0.175, 1) forwards,
+        containerShrink 3s 6s cubic-bezier(0.77, 0, 0.175, 1) forwards,
+        containerExpand 1s 6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+
+    /*Font stuff*/
+    font-family: "Michroma", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    color: white;
+    text-align: center;
+    font-size: 113%;
+}
+
+.container:hover {
+    box-shadow: 0 0 32px 8px rgba(224, 222, 255, 0.8), 0 8px 32px 0 rgba(224, 222, 255, 0.37);
+    border-color: rgba(224, 222, 255, 0.8);
+    color: white;
+    text-shadow: 0 0 8px rgba(224, 222, 255, 0.8), 0 0 16px rgba(224, 222, 255, 0.8);
+    transform: scale(1.08);
+    transition:
+        color 0.2s,
+        text-shadow 0.2s,
+        transform 0.2s;
+}
+
+#logo-navbar {
+    opacity: 0;
+    width: 7vw;
+    height: auto;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 3s;
+}
+
+nav {
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    border-radius: 9vw;
+    align-items: center;
+    justify-content: center;
+    gap: 10vw;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(154, 153, 181, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    opacity: 0;
+    width: 80vw;
+    overflow: hidden;
+    animation:
+        cambia-fondo 16s 4.5s linear infinite forwards,
+        navFadeIn 2s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+        navExpandHeight 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards,
+        navShrink 3s cubic-bezier(0.77, 0, 0.175, 1) forwards,
+        navExpand 1s 3.1s cubic-bezier(0.77, 0, 0.175, 1) forwards,
+        navBorderRadiusAdjust 1s 4s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    transition:
+        box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 0.25),
+        border-color 0.4s cubic-bezier(0.4, 0, 0.2, 0.25);
+}
+
+
+
+nav:hover {
+    box-shadow: 0 0 32px 8px rgba(224, 222, 255, 0.8), 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-color: rgba(224, 222, 255, 0.8);
+}
+
+nav a {
+    font-family: "Michroma", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    opacity: 0;
+    transition: opacity 1.2s;
+    animation: linkFadeIn 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 2.5s;
+    font-size: 61%;
+    color: white;
+    text-decoration: none;
+}
+
+#projects {
+    animation: linkFadeIn 2s 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+
+#dashboard {
+    animation: linkFadeIn 2s 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+#contacto {
+    animation: linkFadeIn 2s 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+nav a:hover {
+    color: white;
+    text-shadow: 0 0 8px rgba(224, 222, 255, 0.8), 0 0 16px rgba(224, 222, 255, 0.8);
+    transform: scale(1.08);
+    transition:
+        color 0.2s,
+        text-shadow 0.2s,
+        transform 0.2s;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(154, 153, 181, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 100vw;
+    height: 7.5vh;
+
+    animation: cambia-fondo 16s 4.5s linear infinite forwards,
+        linkFadeIn 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+    /* Font stuff */
+    font-family: "Michroma", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 63%;
+    color: white;
+    text-decoration: none;
+
+}
+
+footer:hover {
+
+    color: white;
+    text-shadow: 0 0 8px rgba(224, 222, 255, 0.8), 0 0 16px rgba(224, 222, 255, 0.8);
+    transform: scale(1.08);
+    transition:
+        color 0.2s,
+        text-shadow 0.2s,
+        transform 0.2s;
+    box-shadow: 0 0 32px 8px rgba(224, 222, 255, 0.8), 0 8px 32px 0 rgba(224, 222, 255, 0.37);
+    border-color: rgba(224, 222, 255, 0.8);
+
+}
+
+
+
+
+/* Proyectos Page */
+
+
+
+
+.body-container-proyectos {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 10vh;
+    margin-bottom: 20vh;
+    margin-top: 18vh;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+}
+
+.card-info-text {
+    padding: 0 6vw 0 6vw;
+    font-family: "Michroma", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    color: white;
+    text-align: center;
+    font-size: 63%;
+    margin: 0;
+}
+
+.card-info-title {
+    padding-top: 2vh;
+    margin: 0;
+}
+
+.card-info-button {
+    height: 6vh;
+    width: 67vw;
+    border-radius: 9vw;
+    border-color: rgb(255, 255, 255, 0.3);
+    margin-bottom: 2vh;
+    font-family: "Michroma", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 7.7s;
+    animation-fill-mode: forwards;
+}
+
+.card-info-button:hover {
+    color: white;
+    text-shadow: 0 0 8px rgba(224, 222, 255, 0.8), 0 0 16px rgba(224, 222, 255, 0.8);
+    transform: scale(1.055);
+    transition:
+        color 0.2s,
+        text-shadow 0.2s,
+        transform 0.2s;
+    box-shadow: 0 0 32px 8px rgba(224, 222, 255, 0.8), 0 8px 32px 0 rgba(224, 222, 255, 0.37);
+    border-color: rgba(224, 222, 255, 0.8);
+}
+
+#project1-card-info-text {
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 6s;
+    animation-fill-mode: forwards;
+}
+
+#project2-card-info-text {
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 6.5s;
+    animation-fill-mode: forwards;
+}
+
+#project3-card-info-text {
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 7s;
+    animation-fill-mode: forwards;
+}
+
+#image-project-1 {
+    width: 100%;
+    height: 20vh;
+    border-radius: 9vw;
+    object-fit: cover;
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+}
+
+#project1-card-title {
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 4.5s;
+    animation-fill-mode: forwards;
+}
+
+#project2-card-title {
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+}
+
+#project3-card-title {
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 5.5s;
+    animation-fill-mode: forwards;
+}
+
+
+/* Dasboard Page */
+
+.body-container-dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 10vh;
+    margin-top: 18vh;
+    margin-bottom: 20vh;
+}
+
+#dashboard-2-card-info-text {
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 6.5s;
+    animation-fill-mode: forwards;
+    margin-top: 5.5vh;
+}
+
+#image-dashboard-1 {
+    width: auto;
+    height: 33vh;
+    object-fit: cover;
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+}
+
+
+#image-dashboard-2 {
+    width: auto;
+    height: 33vh;
+    object-fit: contain;
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+}
+
+
+#image-dashboard-3 {
+    width: auto;
+    height: 30vh;
+    object-fit: contain;
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+    margin-bottom: 4vh;
+}
+
+
+.card-info-dashboard-1 {
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+}
+
+.card-info-dashboard-3 {
+    margin-top: 4vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+}
+
+#dashboard-3-card-info-text {
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 7s;
+    animation-fill-mode: forwards;
+    margin-bottom: 3.5vh;
+}
+
+
+/* Contacto Page */
+
+.body-container-contacto {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 10vh;
+    margin-bottom: 38vh;
+}
+
+#image-contacto-1 {
+    width: auto;
+    height: 29vh;
+    object-fit: cover;
+    opacity: 0;
+    animation-name: generalFadeIn;
+    animation-duration: 2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+    margin-bottom: 4vh;
+}
+
+#contacto-card-info-2 {
+    margin-bottom: 3.5vh;
+}
+
+
+/* Animations */
+
+@keyframes cambia-fondo {
+    0% {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    16.666% {
+        background-color: rgba(54, 67, 186, 0.5);
+    }
+
+    33.332% {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    49.998% {
+        background-color: rgba(241, 128, 39, 0.5);
+    }
+
+    66.664% {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    83.330% {
+        background-color: rgba(54, 67, 186, 0.5);
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+@keyframes cambia-fondo-2 {
+    0% {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    16.666% {
+        background-color: rgba(54, 67, 186, 0.5);
+    }
+
+    33.332% {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    49.998% {
+        background-color: rgba(241, 128, 39, 0.5);
+    }
+
+    66.664% {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    83.330% {
+        background-color: rgba(54, 67, 186, 0.5);
+    }
+
+    100% {
+        background-color: rgba(255, 255, 255, 1);
+    }
+}
+
+@keyframes navFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes alignLogo {
+    to {
+        margin-left: 1vw;
+    }
+}
+
+@keyframes navExpandHeight {
+    from {
+        height: 0vh;
+    }
+
+    to {
+        height: 9vh;
+    }
+}
+
+@keyframes navShrink {
+    from {
+        width: 89vw;
+    }
+
+    to {
+        width: 4vw;
+    }
+}
+
+@keyframes navExpand {
+    from {
+        width: 4vw;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes linkFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes generalFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes navBorderRadiusAdjust {
+    from {
+        border-radius: 9vw;
+    }
+
+    to {
+        border-radius: 0vw;
+    }
+}
+
+@media (min-width: 1023px) {
+    .body-container-proyectos {
+        flex-direction: row;
+        gap: 5vh;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 35vh;
+        margin-top: 30vh;
+    }
+
+    #image-project-1 {
+        width: 100%;
+        height: 20vh;
+        border-radius: 2vw;
+        object-fit: cover;
+        opacity: 0;
+        animation-name: generalFadeIn;
+        animation-duration: 2s;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        animation-delay: 4s;
+        animation-fill-mode: forwards;
+    }
+
+
+    .body-container-dashboard {
+        flex-direction: row;
+        gap: 4vh;
+    }
+
+    .container {
+        width: 25vw;
+        border-radius: 5vw;
+    }
+
+    .card-info-button {
+        width: 22vw;
+    }
+
+    #logo-navbar {
+        width: 3vw;
+    }
+
+    nav {
+        gap: 20vw;
+    }
+
+    nav a {
+        font-family: "Michroma", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        opacity: 0;
+        transition: opacity 1.2s;
+        animation: linkFadeIn 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation-delay: 2.5s;
+        font-size: 90%;
+        color: white;
+        text-decoration: none;
+    }
+
+    .card-info-button {
+        width: 22vw;
+    }
+
+    .container {
+        border-radius: 2vw;
+    }
+}
